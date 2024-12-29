@@ -1,0 +1,16 @@
+token =
+channel-id =
+# you can add multiple channel ids (separated by a space)
+# right click on the channel you want the script to send alerts to, click copy channel id
+
+partner =
+# options: bf, gf, so, anything you want
+# default is so
+# e.g: `partner = bf` will show up as "here's what your boyfriend is doing"
+
+ping_id =
+# add your partner's user id if you want them to be pinged with every alert (right click on user, click copy user id)
+
+interval = 15
+# time until script sends another screenshot (in minutes)
+# can't be smaller than 1 (script won't run)
