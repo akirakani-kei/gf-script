@@ -55,9 +55,9 @@ fi
 
 	wakeup() {
 		if [ -n "$ping_id" ]; then
-            content="<@$ping_id>, your $term just turned on $pronoun pc! ($time)"
+		content="<@$ping_id>, your $term just turned on $pronoun pc at: $time! (you will receive your first screenshot in 5 minutes)"
           else
-            content="your $term just turned on $pronoun pc! ($time)"
+            content="your $term just turned on $pronoun pc at: $time! (you will receive your first screenshot in 5 minutes)"
           fi
         for CHANNEL_ID in $CHANNEL_IDS; do
           curl --request POST \
@@ -65,13 +65,13 @@ fi
 	    -F "content=\"$content\"" \
             "https://discord.com/api/v10/channels/$CHANNEL_ID/messages"
         done
-	sleep 10
+	sleep 300
 	}
 
       discordfunc() {
 
         timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
-        screenshot_path="$HOME/.config/gf-script/gfscript_$timestamp.png"
+        screenshot_path="/home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfscript_$timestamp.png"
         maim "$screenshot_path"
 	
 	if [ -n "$ping_id" ]; then
