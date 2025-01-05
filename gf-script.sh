@@ -87,7 +87,7 @@ fi
 	echo "Wakeup message successfully sent at $time. Waiting 5 minutes."
 	fi
 
-	sleep 5
+	sleep 300
 	}
 
       discordfunc() {
