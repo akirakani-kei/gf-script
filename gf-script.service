@@ -1,7 +1,7 @@
 [Unit]
 Description=shell script that sends occasional screenshots of your system to your s.o. via post requests
-After=graphical.target
-Requires=graphical.target
+After=graphical-session.target
+Requires=graphical-session.target
 
 [Service]
 ExecStart=/bin/sh -c '%h/.config/gf-script/gf-script.sh'
