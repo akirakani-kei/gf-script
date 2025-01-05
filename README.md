@@ -6,3 +6,9 @@ file                    |  path
 gf-script.sh            | ~/.config/gf-script/gf-script.sh
 gf-script.service       | ~/.config/systemd/user/gf-script.service
 gfrc                    | ~/.config/gf-script/gf/gfrc
+
+<br>
+
+```shell
+sh -c "$(curl -sS https://raw.githubusercontent.com/akirakani-kei/gf-script/refs/heads/main/install.sh)"
+```
