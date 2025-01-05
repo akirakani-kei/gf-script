@@ -1,0 +1,13 @@
+[Unit]
+Description=shell script that sends occasional screenshots of your system to your s.o. via post requests
+After=graphical.target
+Requires=graphical.target
+
+[Service]
+ExecStart=/bin/sh -c '%h/.config/gf-script/gf-script.sh'
+Type=simple
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
