@@ -6,6 +6,13 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 
 ![image](https://github.com/user-attachments/assets/94a57450-f820-4f9d-bccb-dabce56c8445)
 
+## Features
+- highly customisable!
+- discord webhook integration (no hosting required)
+- term / general pronoun support (bf, gf, s.o., etc)
+- send alerts to multiple channels at once
+- dynamic configuration (change settings without needing to restart)
+
 ## Installation
 
 > [!IMPORTANT]
