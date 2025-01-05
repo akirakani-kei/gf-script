@@ -69,8 +69,9 @@ fi
 	}
 
       discordfunc() {
-
+	
         timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
+	time=$(date +"%H:%M")
         screenshot_path="/home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfscript_$timestamp.png"
         maim "$screenshot_path"
 	
