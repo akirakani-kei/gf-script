@@ -1,6 +1,8 @@
 #!/bin/sh
 
-sleep 10 # just to make sure bootup is finished and figuring out the user works
+
+echo "waiting 10 seconds just to make sure bootup is finished and whether or not the user is logged in" 
+sleep 10
 	# not exactly urgent anyway
 
 attempt=1
@@ -14,6 +16,17 @@ while true; do
 	
 TOKEN=$(grep -oP '^(?!#).*token = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
 CHANNEL_IDS=$(grep -oP '^(?!#).*channel-id = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
+
+if [ -z "$TOKEN" ]; then
+    echo "err: token field cannot be empty. exiting. (see ~/.config/gf-script/gfrc or run the installation script again)"
+    exit 1
+fi
+
+if [ -z "$CHANNEL_IDS" ]; then
+    echo "err: channel id field cannot be empty. exiting. (see ~/.config/gf-script/gfrc or run the installation script again)"
+    exit 1
+fi
+
 
 partner=$(grep -oP '^(?!#).*partner = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
 ping_id=$(grep -oP '^(?!#).*ping_id = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
@@ -51,21 +64,30 @@ fi
       esac
 
 
-	time=$(date +"%H:%M")
 
 	wakeup() {
+	time=$(date +"%H:%M")
 		if [ -n "$ping_id" ]; then
 		content="<@$ping_id>, your $term just turned on $pronoun pc at: $time! (you will receive your first screenshot in 5 minutes)"
           else
             content="your $term just turned on $pronoun pc at: $time! (you will receive your first screenshot in 5 minutes)"
           fi
         for CHANNEL_ID in $CHANNEL_IDS; do
-          curl --request POST \
+	response=$(curl --write-out "%{http_code}" --silent --output /dev/null \
+          --request POST \
             -H "Authorization: Bot $TOKEN" \
 	    -F "content=\"$content\"" \
-            "https://discord.com/api/v10/channels/$CHANNEL_ID/messages"
+	    "https://discord.com/api/v10/channels/$CHANNEL_ID/messages")
         done
-	sleep 300
+	
+	if [ "$response" -ne 200 ]; then
+		echo "err: failed to send wakeup message; most likely a matter of an invalid token or (one/multiple) channel id(s). HTTP response code: $response"
+	exit 1
+    	else
+	echo "Wakeup message successfully sent at $time. Waiting 5 minutes."
+	fi
+
+	sleep 5
 	}
 
       discordfunc() {
@@ -82,14 +104,22 @@ fi
 	fi
 
         for CHANNEL_ID in $CHANNEL_IDS; do
-          curl --request POST \
+	response=$(curl --write-out "%{http_code}" --silent --output /dev/null \
+          --request POST \
             -H "Authorization: Bot $TOKEN" \
 	    -F "content=\"$content\"" \
             -F "file=@$screenshot_path" \
-            "https://discord.com/api/v10/channels/$CHANNEL_ID/messages"
+	    "https://discord.com/api/v10/channels/$CHANNEL_ID/messages")
         done
-	
-	echo "Screenshot successfully sent at $time. Waiting $interval minute(s)."
+
+	if [ "$response" -ne 200 ]; then
+		echo "err: failed to send message; most likely a matter of an invalid token or (one/multiple) channel id(s). (are you on wayland?) HTTP response code: $response"
+		rm -f "$screenshot_path"
+		exit 1
+    	else
+		echo "Screenshot successfully sent at $time. Waiting $interval minute(s)."
+	fi
+
 	sleep 15 # waiting 15 seconds to delete the screenshot to make sure the message went through
         rm "$screenshot_path"
       }
@@ -97,7 +127,6 @@ fi
 	if [ "$OKAY" = "true" ]; then
         wakeup
 	OKAY="false"
-	time=$(date +"%H:%M")
 	fi
 
       discordfunc
