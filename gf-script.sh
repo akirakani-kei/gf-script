@@ -96,6 +96,7 @@ fi
 	if [ "$OKAY" = "true" ]; then
         wakeup
 	OKAY="false"
+	time=$(date +"%H:%M")
 	fi
 
       discordfunc
