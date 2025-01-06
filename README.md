@@ -70,7 +70,7 @@ sudo zypper install maim curl
 
 ### Create a Discord Application
 
-Go to *[Discord's Developer Portal](https://discord.com/developers/applications)* and **[create a new application](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)** (or select an already existing one) which you intend to use the script with.
+Go to *[Discord's Developer Portal](https://discord.com/developers/applications)* and **[create a new application](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)** (or use an already existing one) which will serve as a mean of connection to Discord.
 <br> <br>
 ***Copy the token and save it for later.***
 
