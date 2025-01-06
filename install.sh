@@ -38,6 +38,7 @@ read format_choice
 sed -i "/^[^#]*partner =/s/partner =.*/partner = $format_choice/" "$HOME/.config/gf-script/gfrc"
 
 printf "How often do you want the alerts to be sent? (default is 15, enter to skip)\n"
+printf "Value CAN'T be lower than 1 (script won't run)\n"
 printf "interval (in minutes): "
 read interval
 interval=${interval:-15}
