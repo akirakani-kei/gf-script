@@ -12,10 +12,10 @@ OKAY="true"
 while true; do
 
   while [ $attempt -le 20 ]; do
-    if ping -c 1 8.8.8.8 &> /dev/null && [ -n "$(who | grep -E 'tty|pts')" ]; then
+    if ping -c 1 8.8.8.8 > /dev/null 2>&1 && [ -n "$(who | grep -E 'tty|pts')" ]; then
 	
-TOKEN=$(grep -oP '^(?!#).*token = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
-CHANNEL_IDS=$(grep -oP '^(?!#).*channel-id = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
+TOKEN=$(grep -E '^[^#]*token = ' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc | sed 's/.*token = //')
+CHANNEL_IDS=$(grep -E '^[^#]*channel-id = ' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc | sed 's/.*channel-id = //')
 
 if [ -z "$TOKEN" ]; then
     echo "err: token field cannot be empty. exiting. (see ~/.config/gf-script/gfrc or run the installation script again)"
@@ -27,10 +27,9 @@ if [ -z "$CHANNEL_IDS" ]; then
     exit 1
 fi
 
-
-partner=$(grep -oP '^(?!#).*partner = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
-ping_id=$(grep -oP '^(?!#).*ping_id = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
-interval=$(grep -oP '^(?!#).*interval = \K.*' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc)
+partner=$(grep -E '^[^#]*partner = ' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc | sed 's/.*partner = //')
+ping_id=$(grep -E '^[^#]*ping_id = ' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc | sed 's/.*ping_id = //')
+interval=$(grep -E '^[^#]*interval = ' /home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfrc | sed 's/.*interval = //')
 
 if [ "$interval" -lt 1 ]; then
   echo "invalid interval: must be at least 1 minute."
