@@ -70,7 +70,7 @@ Go to *[Discord's Developer Portal](https://discord.com/developers/applications)
 
 <br>
 
-**BONUS:** Copy your s.o.'s User ID if you want them to receive a ping for every alert *(you will be prompted about this during the installation script).*
+**BONUS:** Copy your s.o.'s User ID if you want them to receive a ping with every alert *(you will be prompted about this during the installation script).*
 
 ![image](https://github.com/user-attachments/assets/497a608c-d3fe-401b-9259-bd8978ccc482)
 <sub> &nbsp; &nbsp; *right click their profile, click **Copy User ID***
@@ -89,6 +89,7 @@ After installation, reboot or run `systemctl --user start gf-script`. <br> <br>
 Enjoy~!
 
 <br>
+
 
 ## Paths
 
