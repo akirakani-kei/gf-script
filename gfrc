@@ -14,5 +14,5 @@ ping_id =
 
 interval = 15
 # time until script sends another screenshot (in minutes)
-# can't be smaller than 1 (script won't run)
+# can't be lower than 1 (script won't run)
 # default is 15
