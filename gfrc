@@ -10,6 +10,7 @@ partner =
 
 ping_id =
 # add your partner's user id if you want them to be pinged with every alert (right click on user, click copy user id)
+# leave empty otherwise
 
 interval = 15
 # time until script sends another screenshot (in minutes)
