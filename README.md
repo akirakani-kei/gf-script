@@ -9,7 +9,7 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 ## Features
 - highly customisable!
 - discord webhook integration (no hosting required)
-- term / pronoun support (bf, gf, s.o., etc)
+- term / pronoun support (bf, gf, s.o., etc.)
 - send alerts to multiple channels at once
 - custom time interval (choose how often screenshots should be sent)
 - dynamic configuration (change settings without needing to restart)
@@ -34,7 +34,7 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 ### Install dependencies
 
 
-Debian (Ubuntu, Mint, etc)
+Debian (Ubuntu, Mint, etc.)
 ```shell
 sudo apt install maim curl
 ```
@@ -53,6 +53,24 @@ openSUSE
 ```shell
 sudo zypper install maim curl
 ```
+##
+
+### Create a Discord Application
+
+Go to *[Discord's Developer Portal](https://discord.com/developers/applications)* and **[create a new application](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)** (or select an already existing one) which you intend to use the script with.
+<br> <br>
+***Copy the token and save it for later.***
+
+*[Add your bot to the server](https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links)* you want the alerts to go on ([create a server](https://support.discord.com/hc/en-us/articles/204849977-How-do-I-create-a-server) if you haven't already).
+<br> <br>
+***Also copy the Channel ID(s) you want the screenshots to be sent to and save them.*** <br>
+<sub> Make sure your bot has the necessary permissions to access/send messages to those channels! <br>
+
+<br>
+
+**BONUS:** Copy your s.o.'s User ID if you want them to receive a ping for every alert *(you will be prompted about this during the installation script).*
+![image](https://github.com/user-attachments/assets/497a608c-d3fe-401b-9259-bd8978ccc482)
+<sub> &nbsp; &nbsp; *right click their profile, click **Copy User ID***
 
 ##
 
