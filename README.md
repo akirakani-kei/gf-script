@@ -6,6 +6,17 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 
 ![image](https://github.com/user-attachments/assets/94a57450-f820-4f9d-bccb-dabce56c8445)
 
+<br>
+
+<div align = center>
+  
+&ensp;[<kbd> <br> About <br> </kbd>](#)&ensp;
+&ensp;[<kbd> <br> Features <br> </kbd>](#Features)&ensp;
+&ensp;[<kbd> <br> Installation <br> </kbd>](#Installation)&ensp;
+&ensp;[<kbd> <br> Paths <br> </kbd>](#Paths)&ensp;
+
+</div>
+
 ## Features
 - highly customisable!
 - discord webhook integration (no hosting required)
