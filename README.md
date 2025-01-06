@@ -11,7 +11,7 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 - discord webhook integration (no hosting required)
 - term / pronoun support (bf, gf, s.o., etc.)
 - send alerts to multiple channels at once
-- custom time interval (choose how often screenshots should be sent)
+- custom time interval (choose how often the screenshots are sent)
 - dynamic configuration (change settings without needing to restart)
 
 |              Mentions OFF                                                                 |             Mentions ON                                                                   |
@@ -22,8 +22,10 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 
 > [!IMPORTANT]
 > *gf-script has the following dependencies:*
-`curl maim xorg-server`; <br>
-> *The script is meant to be installed and configured by the sender.*
+`curl maim xorg-server` <br>
+> *It is meant to be installed and configured by the sender.* <br>
+> *The script runs as a systemd **user** process and should be interacted with via the `--user` tag:* <br>
+`systemctl --user status gf-script`
 
 > [!CAUTION]
 > `maim`, the screenshot utility used in the script, does **NOT** support *Wayland.* <br>
@@ -80,6 +82,11 @@ Go to *[Discord's Developer Portal](https://discord.com/developers/applications)
 ```shell
 sh -c "$(curl -sS https://raw.githubusercontent.com/akirakani-kei/gf-script/refs/heads/main/install.sh)"
 ```
+_Paste the previously saved information accordingly; configure around your own preferences._ <br>
+After installation, reboot or run `systemctl --user start gf-script`. <br> <br>
+*See `~/.config/gf-script/gfrc` for further configuration.*
+<br> <br> <br>
+Enjoy~!
 
 <br>
 
