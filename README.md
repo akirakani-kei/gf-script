@@ -3,8 +3,8 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 &nbsp; *(a fork of [inithook](https://github.com/akirakani-kei/inithook))*
 <br>
 
+![image](https://github.com/user-attachments/assets/a3b23b9d-b0dc-4993-b345-d47318c3245a)
 
-![image](https://github.com/user-attachments/assets/94a57450-f820-4f9d-bccb-dabce56c8445)
 
 <br>
 
