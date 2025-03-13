@@ -19,7 +19,7 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 
 ## Features
 - highly customisable!
-- discord webhook integration (no hosting required)
+- discord webhook integration (no hosting required, runs as background systemd process)
 - term / pronoun support (bf, gf, s.o., etc.)
 - send alerts to multiple channels at once
 - custom time interval (choose how often the screenshots are sent)
