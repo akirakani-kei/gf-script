@@ -65,12 +65,19 @@ fi
 
 
 	wakeup() {
-	time=$(date +"%H:%M")
-		if [ -n "$ping_id" ]; then
-		content="<@$ping_id>, your $term just turned on $pronoun pc at: $time! (you will receive your first screenshot in 5 minutes)"
-          else
-            content="your $term just turned on $pronoun pc at: $time! (you will receive your first screenshot in 5 minutes)"
-          fi
+    timestamp=$(date +%s)
+    time=$(date +"%H:%M %Z")
+    os_name=$(uname -s | tr '[:upper:]' '[:lower:]')
+    host_name=$(hostname)
+
+        if [ -n "$ping_id" ]; then
+            content="<@$ping_id>, your $term just turned on $pronoun pc! (\`$host_name\`, running \`$os_name\`, at: $time - <t:$timestamp:R>)
+*you will receive your first screenshot in 5 minutes*"
+        else
+            content="<your $term just turned on $pronoun pc! (\`$host_name\`, running \`$os_name\`, at: $time - <t:$timestamp:R>)
+*you will receive your first screenshot in 5 minutes*"
+        fi
+
         for CHANNEL_ID in $CHANNEL_IDS; do
 	response=$(curl --write-out "%{http_code}" --silent --output /dev/null \
           --request POST \
@@ -92,15 +99,16 @@ fi
       discordfunc() {
 	
         timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
-	time=$(date +"%H:%M")
+ 	timestamp2=$(date +%s)
+ 	time=$(date +"%H:%M %Z")
         screenshot_path="/home/$(who | awk 'NR==1{print $1}')/.config/gf-script/gfscript_$timestamp.png"
         maim "$screenshot_path"
 	
-	if [ -n "$ping_id" ]; then
-		content="<@$ping_id>, here's what your $term is doing ($pronoun time: $time)"
-	else
-            	content="here's what your $term is doing ($pronoun time: $time)"
-	fi
+  if [ -n "$ping_id" ]; then
+        content="<@$ping_id>, here's what your $term is doing ($pronoun time: $time - <t:$timestamp2:R>)"
+    else
+        content="here's what your $term is doing ($pronoun time: $time - <t:$timestamp2:R>)"
+    fi
 
         for CHANNEL_ID in $CHANNEL_IDS; do
 	response=$(curl --write-out "%{http_code}" --silent --output /dev/null \
