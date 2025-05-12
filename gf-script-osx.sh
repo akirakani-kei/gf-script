@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if ! screencapture -x /tmp/perm_test.png; then
-    osascript -e 'display alert "Screen recording access required." message "Go to System Settings > Privacy & Security > Screen Recording, toggle terminal/gf-script then reboot." as critical buttons {"OK"} default button "OK"'
+    osascript -e 'display alert "gf-script Screen recording access required." messsage "Go to System Settings > Privacy & Security > Screen Recording and add a new entry. Using command + G search for /bin/sh, add sh then reboot." as critical buttons {"OK"} default button "OK"'
   open "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"
   exit 1
 fi
