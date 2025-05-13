@@ -7,8 +7,8 @@ if ! screencapture -x /tmp/perm_test.png; then
 fi
 rm -f /tmp/perm_test.png
 
-echo "waiting 10 seconds just to make sure bootup is finished and whether or not the user is logged in" 
-sleep 10
+echo "waiting 90 seconds just to make sure bootup is finished and whether or not the user is logged in" 
+sleep 90
     # not exactly urgent anyway
 
 attempt=1
