@@ -1,15 +1,15 @@
 #!/bin/sh
 
+echo "waiting 90 seconds just to make sure bootup is finished and whether or not the user is logged in" 
+sleep 90
+    # not exactly urgent anyway
+
 if ! screencapture -x /tmp/perm_test.png; then
     osascript -e 'display alert "gf-script Screen recording access required." messsage "Go to System Settings > Privacy & Security > Screen Recording and add a new entry. Using command + G search for /bin/sh, add sh then reboot." as critical buttons {"OK"} default button "OK"'
   open "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"
   exit 1
 fi
 rm -f /tmp/perm_test.png
-
-echo "waiting 90 seconds just to make sure bootup is finished and whether or not the user is logged in" 
-sleep 90
-    # not exactly urgent anyway
 
 attempt=1
 OKAY="true"
