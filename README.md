@@ -110,5 +110,3 @@ gf-script.service       | ~/.config/systemd/user/gf-script.service
 gfrc                    | ~/.config/gf-script/gf/gfrc
 
 <br>
-
-<sub> *dedicated to my curious little girlfriend (i do run this myself)*
