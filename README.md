@@ -93,7 +93,7 @@ Go to *[Discord's Developer Portal](https://discord.com/developers/applications)
 ```shell
 sh -c "$(curl -sS https://raw.githubusercontent.com/akirakani-kei/gf-script/refs/heads/main/install.sh)"
 ```
-_Paste the previously **[saved information](#create-a-discord-application)** accordingly; configure around your own preferences._ <br>
+_Paste the previously **[saved information](#create-a-discord-application)** accordingly; configure based on your own preferences._ <br>
 After installation, reboot or run `systemctl --user start gf-script`. <br> <br>
 *See `~/.config/gf-script/gfrc` for further configuration.*
 <br> <br> <br>
