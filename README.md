@@ -18,6 +18,7 @@ shell script that sends occasional screenshots of your system to your s.o. <br>
 </div>
 
 ## Features
+- **both linux & macOS support!**
 - highly customisable!
 - discord webhook integration (no hosting required, runs as background systemd process)
 - term / pronoun support (bf, gf, s.o., etc.)
