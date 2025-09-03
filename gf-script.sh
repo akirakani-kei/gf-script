@@ -68,7 +68,7 @@ fi
     timestamp=$(date +%s)
     time=$(date +"%H:%M %Z")
     os_name=$(uname -s | tr '[:upper:]' '[:lower:]')
-    host_name=$(hostname)
+    host_name=$(who | awk 'NR==1{print $1}')
 
         if [ -n "$ping_id" ]; then
             content="<@$ping_id>, your $term just turned on $pronoun pc! (\`$host_name\`, running \`$os_name\`, at: $time - <t:$timestamp:R>)
